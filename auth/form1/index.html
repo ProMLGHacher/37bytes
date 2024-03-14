@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>37 bytes</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #FAFAFA;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            justify-content: center;
+            padding: 60px;
+        }
+
+        button {
+            padding: 12px 50px;
+            background-color: #2998FF;
+            color: white;
+            border: 2px solid #0F8FEE;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 20px;
+            align-self: flex-start;
+        }
+
+        button:hover {
+            background-color: #0070C1;
+        }
+
+        .wrapper {
+            box-shadow: #2E2D3D2E 0px 0px 12px 0px, #2E2D3D0A 0px 16px 80px 0px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 900px;
+            position: relative;
+        }
+
+        .wrapper_wrp {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .wrapper_wrp-item {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 13px;
+            height: 13px;
+        }
+
+        .newsletter {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .input {
+            border: 1px solid #E5E5E5;
+            border-radius: 3px;
+            padding: 15px 17px;
+        }
+
+        .desc {
+            color: #999999;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Зарегистрироваться</h1>
+    <form class="wrapper">
+        <a href="../"><img class="close" src="../close.svg" alt=""></a>
+        <div class="wrapper_wrp">
+            <div class="wrapper_wrp-item">
+                <input class="input" required placeholder="Email или телефон">
+                <input class="input" required type="url" placeholder="Город">
+                <label class="newsletter" for="newsletter">
+                    <input id="newsletter" type="checkbox">
+                    <p>Я хочу получить рассылку после мероприятия</p>
+                </label>
+                <button type="submit">Зрегистрироваться</button>
+            </div>
+            <img src="../Frame 3067.png" alt="">
+        </div>
+        <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo.</p>
+    </form>
+</body>
+
+</html>
