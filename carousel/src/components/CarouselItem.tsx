@@ -1,3 +1,5 @@
+import { memo } from "react"
+import './CarouselItem.css'
 
 type CarouselItemProps = {
     onClick: () => void,
@@ -7,17 +9,14 @@ type CarouselItemProps = {
     selected: boolean
 }
 
-export const CarouselItem = ({ onClick, icon, title, selected, desc }: CarouselItemProps) => {
-
-
-
+export const CarouselItem = memo(({ onClick, icon, title, selected, desc }: CarouselItemProps) => {
     return (
-        <div onClick={onClick}>
-            <div>
-                <img src={icon} width={24} height={24} alt="" />
-                <h5>{title}</h5>
+        <div className="carouselItem" onClick={onClick}>
+            <img className="carouselItem_icon" src={icon} alt="" />
+            <div className="carouselItem_text">
+                <h5 className="carouselItem_text-title">{title}</h5>
+                <p className={selected ? 'desc active' : 'desc'}>{desc}</p>
             </div>
-            {selected && <p>{desc}</p>}
         </div>
     )
-}
+})
