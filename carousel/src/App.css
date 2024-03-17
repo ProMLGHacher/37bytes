@@ -5,6 +5,8 @@ main {
     align-items: center;
     gap: 64px;
     min-height: 100dvh;
+    max-width: 1444px;
+    margin-inline: auto;
 }
 
 .wrapper {
