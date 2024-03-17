@@ -71,6 +71,7 @@
         }
 
         .input {
+            width: 100%;
             border: 1px solid #E5E5E5;
             border-radius: 3px;
             padding: 15px 17px;
@@ -89,12 +90,30 @@
         <a href="../"><img class="close" src="../close.svg" alt=""></a>
         <div class="wrapper_wrp">
             <div class="wrapper_wrp-item">
-                <input class="input" required placeholder="Имя">
-                <input class="input" required placeholder="Фамилия">
-                <input class="input" required placeholder="Телефон">
-                <input class="input" required placeholder="Email">
-                <input class="input" required placeholder="Название компании">
-                <input class="input" required placeholder="Регион">
+                <div>
+                    <input id="name" class="input" required placeholder="Имя">
+                    <p id="name_error" style="color: red;"></p>
+                </div>
+                <div>
+                    <input id="lastname" class="input" required type="text" placeholder="Фамилия">
+                    <p id="lastname_error" style="color: red;"></p>
+                </div>
+                <div>
+                    <input id="phone" class="input" required type="tel" placeholder="Телефон">
+                    <p id="phone_error" style="color: red;"></p>
+                </div>
+                <div>
+                    <input id="Email" class="input" required type="text" placeholder="Email">
+                    <p id="Email_error" style="color: red;"></p>
+                </div>
+                <div>
+                    <input id="company" class="input" required type="text" placeholder="Название компании">
+                    <p id="company_error" style="color: red;"></p>
+                </div>
+                <div>
+                    <input id="region" class="input" required type="text" placeholder="Регион">
+                    <p id="region_error" style="color: red;"></p>
+                </div>
                 <label class="newsletter" for="newsletter">
                     <input id="newsletter" type="checkbox">
                     <p>Я хочу получить рассылку после мероприятия</p>
@@ -108,6 +127,114 @@
             magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
             commodo.</p>
     </form>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validateForm()) {
+                console.log({
+                    mail: document.getElementById('Email').value,
+                    phone: document.getElementById('phone').value,
+                    newsletter: document.getElementById('newsletter').checked,
+                    name: document.getElementById('name').value,
+                    lastname: document.getElementById('lastname').value,
+                    company: document.getElementById('company').value,
+                    region: document.getElementById('region').value,
+                });
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            const re = /^\+?\d{11}$/;
+            return re.test(phone);
+        }
+
+
+        document.getElementById('name').addEventListener('input', () => {
+            document.getElementById('name_error').innerHTML = '';
+        });
+
+        document.getElementById('lastname').addEventListener('input', () => {
+            document.getElementById('lastname_error').innerHTML = '';
+        });
+
+        document.getElementById('phone').addEventListener('input', () => {
+            document.getElementById('phone_error').innerHTML = '';
+        });
+
+        document.getElementById('Email').addEventListener('input', () => {
+            document.getElementById('Email_error').innerHTML = '';
+        });
+
+        document.getElementById('company').addEventListener('input', () => {
+            document.getElementById('company_error').innerHTML = '';
+        });
+
+        document.getElementById('region').addEventListener('input', () => {
+            document.getElementById('region_error').innerHTML = '';
+        });
+
+
+        function validateToCirrilyc(text) {
+            const re = /^[а-яА-Я]+$/;
+            return re.test(text);
+        }
+
+        function validateForm() {
+            const email = document.getElementById('Email').value;
+            const phone = document.getElementById('phone').value;
+            const newsletter = document.getElementById('newsletter').checked;
+            const name = document.getElementById('name').value;
+            const lastname = document.getElementById('lastname').value;
+            const company = document.getElementById('company').value;
+            const region = document.getElementById('region').value;
+
+            const errors = [];
+
+
+            if (!validatePhone(phone)) {
+                errors.push('phone');
+                document.getElementById('phone_error').innerHTML = 'Некорректный номер телефона';
+            }
+
+            if (!validateEmail(email)) {
+                errors.push('email');
+                document.getElementById('Email_error').innerHTML = 'Некорректный email';
+            }
+
+            if (!validateToCirrilyc(name)) {
+                errors.push('name');
+                document.getElementById('name_error').innerHTML = 'Имя должно содержать только кириллицу';
+            }
+
+            if (!validateToCirrilyc(lastname)) {
+                errors.push('lastname');
+                document.getElementById('lastname_error').innerHTML = 'Фамилия должна содержать только кириллицу';
+            }
+
+            if (!validateToCirrilyc(region)) {
+                errors.push('region');
+                document.getElementById('region_error').innerHTML = 'Регион должен содержать только кириллицу';
+            }
+
+            if (errors.length > 0) {
+                return false;
+            }
+
+            // if (newsletter) {
+            //     alert('Вы подписались на рассылку');
+            // }
+
+            return true;
+        }
+
+
+    </script>
 </body>
 
 </html>
