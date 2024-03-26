@@ -22,8 +22,14 @@ function App() {
           {
             benefits.map((el, index) => <CarouselItem desc={el.desc} icon={el.icon} onClick={changeSelected(index)} selected={index === selected} title={el.title} key={el.title} />)
           }
-        </div> 
-        <img src={benefits[selected].img} alt="" />
+        </div>
+        <div style={{
+          position: 'relative'
+        }}>
+          {
+            benefits.map((el, index) => <img className={`image ${index === selected && 'active'}`} src={el.img} alt="" />)
+          }
+        </div>
       </div>
     </main>
   )

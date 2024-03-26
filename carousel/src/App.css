@@ -16,3 +16,13 @@ main {
 
     margin-inline: 64px;
 }
+
+.image {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.image.active {
+    opacity: 1;
+}

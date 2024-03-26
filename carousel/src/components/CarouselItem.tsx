@@ -15,7 +15,9 @@ export const CarouselItem = memo(({ onClick, icon, title, selected, desc }: Caro
             <img className="carouselItem_icon" src={icon} alt="" />
             <div className="carouselItem_text">
                 <h5 className="carouselItem_text-title">{title}</h5>
-                <p className={selected ? 'desc active' : 'desc'}>{desc}</p>
+                <div className={selected ? 'desc active' : 'desc'}>
+                    <div>{desc}</div>
+                </div>
             </div>
         </div>
     )
