@@ -12,7 +12,9 @@ function App() {
 
   return (
     <main>
-      <h1>Решайте задачи, опираясь<br />на данные о рынке труда</h1>
+      <h1 style={{
+        textAlign: 'center'
+      }}>Решайте задачи, опираясь<br />на данные о рынке труда</h1>
       <div className="wrapper">
         <div style={{
           display: 'flex',
